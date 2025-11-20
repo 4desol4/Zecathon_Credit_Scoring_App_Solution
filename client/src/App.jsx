@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import { TrendingUp, AlertCircle, CheckCircle, Activity } from "lucide-react";
 
-const API_URL = "http://localhost:3000/api";
+const API_URL = "https://zecathon-credit-scoring-app-solution.onrender.com/api";
 
 export default function App() {
   const [userId, setUserId] = useState("");

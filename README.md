@@ -33,3 +33,4 @@ An AI/ML credit scoring model will be added later for predictive scoring and aut
 | Financial Behavior     | 15%    |
 
 Final scores are calculated using:
+
