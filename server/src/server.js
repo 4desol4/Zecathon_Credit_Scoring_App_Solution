@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 //cors origin
 app.use(
   cors({
-    origin: "http://localhost:5173", 
+    origin: "https://zecathon-credit-scoring-app.vercel.app/"|| "http://localhost:5173", 
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
