@@ -1,0 +1,62 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String        @unique
+  phone         String?
+  accountNumber String        @unique
+  accountAge    Int
+  businessType  String
+  businessName  String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  transactions  Transaction[]
+  creditScores  CreditScore[]
+}
+
+model Transaction {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  type        String
+  amount      Float
+  category    String
+  date        DateTime
+  balance     Float
+  description String?
+  createdAt   DateTime @default(now())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date])
+  @@index([date])
+}
+
+model CreditScore {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String   @db.ObjectId
+  score        Int
+  grade        String
+  riskLevel    String
+  calculatedAt DateTime @default(now())
+
+  // Breakdown
+  transactionScore Int
+  cashFlowScore    Int
+  stabilityScore   Int
+  behaviorScore    Int
+
+  recommendations String[]
+  version         String   @default("v1.0")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, calculatedAt])
+  @@index([score])
+}

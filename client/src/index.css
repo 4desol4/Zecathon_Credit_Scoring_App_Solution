@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lilita+One&family=Qwitcher+Grypen:wght@400;700&family=Rajdhani:wght@300;400;500;600;700&family=Rubik+Gemstones&display=swap");
+body {
+  margin: 0;
+  font-family: "Rajdhani", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: "Rajdhani", sans-serif;
+}
+.font-one {
+  font-family: "Lilita One", sans-serif;
+}
